@@ -10,7 +10,11 @@
 #clone_dir="stable-diffusion-webui"
 
 # Commandline arguments for webui.py, for example: export COMMANDLINE_ARGS="--medvram --opt-split-attention"
-#export COMMANDLINE_ARGS=""
+export COMMANDLINE_ARGS="--medvram --listen"
+export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
+
+# sudo apt update && sudo apt install -y libtcmalloc-minimal4
+export LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libtcmalloc_minimal.so.4
 
 # python3 executable
 #python_cmd="python3"
@@ -25,7 +29,7 @@
 #export LAUNCH_SCRIPT="launch.py"
 
 # install command for torch
-#export TORCH_COMMAND="pip install torch==1.12.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113"
+export TORCH_COMMAND="pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124 --upgrade --force-reinstall"
 
 # Requirements file to use for stable-diffusion-webui
 #export REQS_FILE="requirements_versions.txt"
